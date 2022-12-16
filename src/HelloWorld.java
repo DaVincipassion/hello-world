@@ -11,13 +11,5 @@ public class HelloWorld {
 		for(int i = 0; i<result.length;i++) {
 			System.out.println(result[i]);
 		}
-	}
-
-	public static void main(String[] args) {
-		for(int i = 2; i<10;i++) {
-		int[] result = caculate(i);
-		print(result);
-		}
-		
-	}			
+	}		
 }
