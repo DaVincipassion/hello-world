@@ -3,13 +3,13 @@ public class HelloWorld {
 
 	public static void main(String[] args) {
 
-		int i=1;
-		while(i<10) {
-			i = i + 1;
-		}
-		for(int j=1;j<10;j++){
-			System.out.println(7*j);
-		}
+		System.out.println("구구단 중 출력할 단은? : ");
+		Scanner scanner = new Scanner(System.in);
+		int number = scanner.nextInt();
+		System.out.println("number : " + number);
 		
-	}
+		for(int i=1;i<10;i++) {
+			System.out.println("값은" + i * number);
+			}			
+	}			
 }
