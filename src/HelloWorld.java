@@ -1,35 +1,13 @@
 import java.util.*;
 public class HelloWorld {
 	public static void main(String[] args) {
+		int sum = 0; //합계를 저장하기 위한 변수
 		
-		int score = 0;
-		char grade = ' ';
-		
-		System.out.println("당신의 점수를 입력하세요.");
-		
-		Scanner scanner = new Scanner(System.in);
-		String tmp = scanner.nextLine();    //화면을 통해 입력받은 내용을 tmp에 저장
-		score = Integer.parseInt(tmp);      //입력받은 문자열(tmp)를 숫자로 변환
-		
-		switch(score/10) {
-		case 10:
-		case 9:
-			grade = 'A';
-			break;
-		case 8:
-			grade = 'B';
-		break;
-		case 7:
-			grade = 'C';
-			break;
-		case 6:
-			grade = 'd';
-			break;
-			default:
-				grade = 'F';
-				
+		for(int i = 1; i<=10;i++) {
+			sum += i;
+			System.out.printf("1부터 %2d까지의 합:%2d%n", i , sum);
 		}
-		System.out.println("당신의 학점은"+grade+"입니다.");
+		
 	}
 	
 		
