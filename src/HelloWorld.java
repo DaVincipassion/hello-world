@@ -1,14 +1,21 @@
 import java.util.*;
 public class HelloWorld {
 	public static void main(String[] args) {
-		int sum = 0; //합계를 저장하기 위한 변수
+	
+		int num = 0;
 		
-		for(int i = 1; i<=10;i++) {
-			sum += i;
-			System.out.printf("1부터 %2d까지의 합:%2d%n", i , sum);
+		System.out.println("*을 출력할 라인의 수 입력:");
+		
+		Scanner scanner = new Scanner(System.in);
+		String tmp = scanner.nextLine();
+		num = Integer.parseInt(tmp);
+		
+		for(int i=0;i<num;i++) {
+			for(int j=0;j<=i;j++){
+				System.out.print("*");
+			}
+			System.out.println();
 		}
 		
 	}
-	
-		
 }
