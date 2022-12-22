@@ -22,6 +22,10 @@ public class HelloWorld {
 		System.out.println(c1.kind +","+ c1.number +","+ c1.width +","+ c1.height);
 		System.out.println(c2.kind +","+ c2.number +","+ c2.width +","+ c2.height);
 		//c2도 바뀐걸 알 수 있다 c1 인스턴스 변수인줄 알고 바꿨다가 c2도 바뀌어 버림 클래스 변수이기에 c1,c2 모두 하나의 클래스 변수를 저장하고있다.
+		
+		Card c3 = new Card();
+		int result = c3.add(1,3);
+		System.out.println(result);
 	}
 
 }
@@ -30,4 +34,9 @@ class Card{
 	int number;
 	static int width = 100;
 	static int height = 50;
+	
+	int add(int a,int b) {
+		int result = a+b;
+		return result;
+	}
 }
