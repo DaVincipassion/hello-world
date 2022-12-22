@@ -2,38 +2,32 @@ import java.util.*;
 public class HelloWorld {
 	public static void main(String[] args) {
 	
-		int [][] score = {
-				{ 100, 100, 100,}
-				,{20, 20, 20,}
-				,{30, 30, 30}
-				,{40, 40, 40}
-				,{50, 50, 50}
-		};
-		int korTotal = 0, engTotal = 0, mathTotal = 0;
+		System.out.println("Card.width = " + Card.width);  //객체 생성 없이 바로 사용가능하다 클래스 변수이기에
+		System.out.println("Card.height = " + Card.height);
 		
-		System.out.println("번호     국어    영어    수학   총점   평균");
-		System.out.println("===========================");
+		Card c1 = new Card();
+		c1.kind = "Heart";
+		c1.number = 7;
 		
-		for(int i = 0;i<score.length;i++) {
-			int sum=0;
-			float avg=0.0f;
-			
-			korTotal += score[i][0];
-			engTotal += score[i][1];
-			mathTotal += score[i][2];
-			
-			for(int j=0;j<score[i].length;j++) {
-				sum += score[i][j];
-				System.out.printf("%5d", sum, avg);
-			}
-			avg = sum/(float)score[i].length;
-			System.out.printf("%5d %5.1f%n", sum, avg);
-			
-			
-		}
-		System.out.println("==========================");
-		System.out.printf("총점:%3d %4d %4d%n",korTotal,engTotal,mathTotal);
+		Card c2 = new Card();
+		c2.kind = "Spade";
+		c2.number = 4;
 		
+		System.out.println("c1은 " + c1.kind + "," + c1.number + "크기는 "+ c1.width + c1.height);
+		System.out.println("c2은 " + c2.kind + "," + c2.number + "크기는 "+ c2.width + c2.height);
+		System.out.println("c1의 width height 각각 50, 80으로 변경합니다");
+		
+		c1.width = 50;    //c1.width라고 쓰면 인스턴스 변수로 착각하기 쉽기에 Card.width라고 써주는게 좋다
+		c1.height = 80;
+		System.out.println(c1.kind +","+ c1.number +","+ c1.width +","+ c1.height);
+		System.out.println(c2.kind +","+ c2.number +","+ c2.width +","+ c2.height);
+		//c2도 바뀐걸 알 수 있다 c1 인스턴스 변수인줄 알고 바꿨다가 c2도 바뀌어 버림 클래스 변수이기에 c1,c2 모두 하나의 클래스 변수를 저장하고있다.
 	}
 
+}
+class Card{
+	String kind;
+	int number;
+	static int width = 100;
+	static int height = 50;
 }
