@@ -4,8 +4,11 @@ class Point{
 	int y;
 }
 class Circle{
-	Point p = new Point();
+	Point p;
 	int r;
+	Circle(){
+		p = new Point(); //생성자로 초기화!!!!
+	}
 }
 public class HelloWorld {
 	public static void main(String[] args) {
