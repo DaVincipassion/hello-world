@@ -1,23 +1,30 @@
 
 class HelloWorld{
 	public static void main(String args[]) {
-      Data1 d1 = new Data1();
-      Data2 d2 = new Data2(); //에러발생 10을 넣어줌 
+      
+		Car c1 = new Car();
+		c1.color = "white";
+		c1.gearType = "auto";
+		c1.door = 4;
+		
+		Car c2 = new Car("White", "auto", 4);
+		
+		System.out.println(c1.color + c1.gearType + c1.door);
+		System.out.println(c2.color + c2.gearType + c2.door);
 	}
 }
      
-class Data1{
-	int value;
-}
-class Data2{
-	int value;
-	Data2(){ //생성자
+class Car{
+	String color;
+	String gearType;
+	int door;
 	
-	}
-	Data2(int x){
-		value = x;
+	Car(){}
+	Car(String c, String g,int d){
+		color = c;
+		gearType = g;
+		door = d;
 	}
 }
-
 	
 	
