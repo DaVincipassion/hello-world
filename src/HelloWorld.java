@@ -1,18 +1,18 @@
 class Data{int x;}
 class HelloWorld{
 	public static void main(String args[]) {
-        Data d = new Data();
-        d.x=10;
+        int result = factorial(4);
         
-
-        Data d2 = copy(d);
-       System.out.println(d.x);
-        System.out.println(d2.x);
+        System.out.println(result);
         
 	}
-	static Data copy(Data d) {
-		Data tmp = new Data();
-		tmp.x = d.x;
-		return tmp;
+	static int factorial(int n) {
+		int result=0;
+		
+		if(n==1)
+			result = 1;
+		else
+			result = n* factorial(n-1);
+		return result;
 	}
 }
