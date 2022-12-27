@@ -1,17 +1,18 @@
 class Data{int x;}
 class HelloWorld{
 	public static void main(String args[]) {
-        int x[]= {10};
+        Data d = new Data();
+        d.x=10;
         
-        System.out.println(x[0]);
-        
-        change(x);
-        System.out.println("after change");
-        System.out.println("main x"+x[0]);
+
+        Data d2 = copy(d);
+       System.out.println(d.x);
+        System.out.println(d2.x);
         
 	}
-	static void change(int x[]) {
-		x[0] = 1000;
-		System.out.println("change:x"+x[0]);
+	static Data copy(Data d) {
+		Data tmp = new Data();
+		tmp.x = d.x;
+		return tmp;
 	}
 }
