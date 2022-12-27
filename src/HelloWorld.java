@@ -2,32 +2,34 @@
 class HelloWorld{
 	public static void main(String args[]) {
        
-		System.out.println(MyMath2.add(200L,100L));
-		System.out.println(MyMath2.subtract(200L,100L));
-		System.out.println(MyMath2.multiply(200L,100L));
-		System.out.println(MyMath2.divide(200.0,100.0));
-		
-		MyMath2 mm = new MyMath2();
-		mm.a = 200L;
-		mm.b = 100L;
-		
-		System.out.println(mm.add());
-		System.out.println(mm.subtract());
-		System.out.println(mm.multiply());
-		System.out.println(mm.divide());
 	}
 }
      
-class MyMath2{
-	long a, b;
+class MemberCall{
+	int iv = 10;
+	static int cv = 20;
 	
-	long add() {return a+b;}
-	long subtract() {return a-b;}
-	long multiply() {return a * b;}
-	double divide() {return a/b;}
+	int iv2 = cv;
+	static int cv2 = new MemberCall().iv;
 	
-	static long add(long a,long b) {return a+b;}
-	static long subtract(long a,long b) {return a-b;}
-	static long multiply(long a,long b) {return a*b;}
-	static double divide(double a,double b) {return a / b;}
+	static void staticMethod1() {
+		System.out.println(cv);
+		MemberCall c = new MemberCall();
+		System.out.println(c.iv);
 	}
+	void instanceMethod1() {
+		System.out.println(cv);
+		System.out.println(iv);
+	}
+	static void staticMethod2() {
+	staticMethod1();
+	MemberCall c = new MemberCall();
+	c.instanceMethod1();
+	}
+	void instanceMethod2() {
+		staticMethod1();
+		instanceMethod1();
+	
+	}
+}
+	
