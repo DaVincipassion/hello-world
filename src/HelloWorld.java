@@ -1,22 +1,22 @@
 
 class HelloWorld{
 	public static void main(String args[]) {
-        int n = 21;
-        long result = 0;
-        for(int i = 1; i<= n; i++) {
-        	result = factorial(i);
-        	
-        	if(result == -1) {
-        		System.out.printf("유효하지 않은 값",n);
-        		break;
-        	}
-        	System.out.printf("",i,result);
-        }
-	}
-	static long factorial(int n) {
-		if(n<=0 || n>20)return -1;
-		if(n<=1) return 1;
-			return n* factorial(n-1);
+       
+		int x=2;
+		int n=5;
+		long result = 0;
 		
+		for(int i=1;i<=n;i++) {
+			result += power(x,i);
+		}
+	
+		System.out.println(result);
 	}
+     
+
+	static long power(int x,int n) {
+		if(n==1) return x;
+		return x * power(x, n-1);
+	}
+		
 }
