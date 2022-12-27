@@ -1,35 +1,23 @@
 
 class HelloWorld{
 	public static void main(String args[]) {
-       
+      Data1 d1 = new Data1();
+      Data2 d2 = new Data2(); //에러발생 10을 넣어줌 
 	}
 }
      
-class MemberCall{
-	int iv = 10;
-	static int cv = 20;
+class Data1{
+	int value;
+}
+class Data2{
+	int value;
+	Data2(){ //생성자
 	
-	int iv2 = cv;
-	static int cv2 = new MemberCall().iv;
-	
-	static void staticMethod1() {
-		System.out.println(cv);
-		MemberCall c = new MemberCall();
-		System.out.println(c.iv);
 	}
-	void instanceMethod1() {
-		System.out.println(cv);
-		System.out.println(iv);
-	}
-	static void staticMethod2() {
-	staticMethod1();
-	MemberCall c = new MemberCall();
-	c.instanceMethod1();
-	}
-	void instanceMethod2() {
-		staticMethod1();
-		instanceMethod1();
-	
+	Data2(int x){
+		value = x;
 	}
 }
+
+	
 	
