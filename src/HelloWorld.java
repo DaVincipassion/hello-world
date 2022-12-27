@@ -10,10 +10,13 @@ class Tv{
 
 class HelloWorld{
 	public static void main(String args[]) {
-		Tv t;
-		t = new Tv();
-		t.channel = 7;
-		t.channelUp();
-		System.out.println("현재 채널은 "+t.channel+"입니다.");
+		Tv t1 = new Tv();
+		Tv t2 = new Tv();
+		System.out.println("t1의 채널값은 "+t1.channel+"입니다.");
+		System.out.println("t2의 채널값은 "+t2.channel+"입니다.");
+		t1.channel = 7;
+		System.out.println("t1의 채널값은"+t1.channel+"으로 변경하였습니다.");
+		
+		System.out.println("t2의 채널은 "+t2.channel+"입니다.");
 	}
 }
