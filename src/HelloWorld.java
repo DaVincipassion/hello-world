@@ -1,30 +1,27 @@
-class Card{
-	String kind;
-	int number;
-	static int width = 100;
-	static int height = 250;
+class MyMath{
+	long add(long a, long b) {
+
+		long result = a+b;
+		return result;
+		}
+	long subtrack(long a, long b) {return a-b;}
+	long multiply(long a,long b) {return a*b;}
+	double divide(double a, double b) {return a / b;}
 }
 
 class HelloWorld{
 	public static void main(String args[]) {
-		System.out.println("Card.width= "+Card.width);
-		System.out.println("Card.height= "+Card.height);
+
+		MyMath mm = new MyMath();
+		long result1 = mm.add(5L, 3L);
 		
-		Card c1 =new Card();
-		c1.kind = "Heart";
-		c1.number = 7;
+		long result2 = mm.subtrack(5L, 3L);
+		long result3 = mm.multiply(5L, 3L);
+		double result4 = mm.divide(5L, 3L);
 		
-		Card c2 = new Card();
-		c2.kind = "Spade";
-		c2.number= 4;
-		
-		System.out.println(c1.kind+","+c1.number +","+ c1.width + c1.height);
-		System.out.println(c2.kind+","+c2.number +","+ c2.width + c2.height);
-		
-		c1.width = 50;
-		c1.height = 80;
-		
-		System.out.println(c1.kind+c1.number + c1.width + c1.height);
-		System.out.println(c2.kind+c2.number + c2.width + c2.height);
+		System.out.println(result1);
+		System.out.println(result2);
+		System.out.println(result3);
+		System.out.println(result4);
 	}
 }
