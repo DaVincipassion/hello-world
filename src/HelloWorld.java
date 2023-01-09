@@ -1,35 +1,42 @@
 
 class HelloWorld{
 	public static void main(String args[]) {
-		Unit[] group = {new Marine(), new Tank(), new Dropship() };
-		
-		for(int i=0; i < group.length;i++)
-			group[i].move(100, 200);
+		Child3 c= new Child3();
+		c.method1();
+		c.method2();
+		MyInterface.staticMethod();
+		MyInterface2.staticMethod();
 	}
 }
-abstract class Unit{
-	int x,y;
-	abstract void move(int x,int y);
-	void stop() {/*현재 위치에 정지  */}
+class Child3 extends Parent3 implements MyInterface, MyInterface2{
+	public void method1() {
+		System.out.println("method1() in child3");
+	}
 }
 
-class Marine extends Unit{ //보병
-	void move(int x, int y) {
-		System.out.println("Marine[x="+x+",y="+y+"]");
+class Parent3{
+	public void method() {
+		System.out.println("method2() in Parent3");
 	}
-	void stimPack() {/* 공격모드를 변환한다. */}
 }
 
-class Tank extends Unit{ //탱크
-	void move(int x,int y) {
-		System.out.println("Tank[x="+x+",y="+y+"]");
+interface MyInterface{
+	default void method1() {
+		System.out.println("method1() in MyInterface");
 	}
-	void changeMode() {/* 공격모드를 변환한다.*/}
+	default void method2() {
+		System.out.println("method2() in MyInterface");
+	}
+	static void staticMethod() {
+		System.out.println("staticmethod() in MyInterface");
+	}
 }
-class Dropship extends Unit{//수송선
-	void move(int x,int y) {
-		System.out.println("Dropship[x="+x+",y="+y+"]");
+
+interface MyInterface2{
+	default void method1() {
+		System.out.println("method1() in MyInterface2");
 	}
-	void load() {}
-	void unload() {}
+	static void staticMethod() {
+		System.out.println("staticMethod() in MyInterface2");
+	}
 }
