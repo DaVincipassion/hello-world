@@ -1,69 +1,35 @@
 
 class HelloWorld{
 	public static void main(String args[]) {
-     
-		Point[] p = { new Point(100, 100),
-				new Point(140, 50),
-				new Point(200, 100)};
+		Unit[] group = {new Marine(), new Tank(), new Dropship() };
 		
-		Triangle t = new Triangle(p);
-		Circle c = new Circle(new Point(150, 150),50);
-		
-		t.draw(); //삼각형을 그린다.
-		c.draw(); //원을 그린다.
-		}
-	}
-class Shape{
-	String color = "black";
-	void draw() {
-		System.out.printf("[color=%s]%n", color);
+		for(int i=0; i < group.length;i++)
+			group[i].move(100, 200);
 	}
 }
-class Point{
-	int x;
-	int y;
-	
-	Point(int x,int y){
-		this.x = x;
-		this.y = y;
-	}
-	Point(){
-		this(0,0);
-	}
-	
-	String getXY() {
-		return "("+x+","+y+")";  //x와y의 값을 문자열로 반환
-		
-	}
-}
-class Circle extends Shape{
-	Point center; //원의 원점좌표
-	int r;        //반지름
-	
-	Circle(){
-		this(new Point(0, 0), 100); // Circle(Point center, int r)를 호출
-	}
-	Circle(Point center, int r){
-		this.center = center;
-		this.r =r;
-	}
-	
-	void draw() {
-		System.out.printf("[center=(%d, %d), r=%d, color=%s]%n",center.x, center.y, r, color);
-	}
-	
+abstract class Unit{
+	int x,y;
+	abstract void move(int x,int y);
+	void stop() {/*현재 위치에 정지  */}
 }
 
-class Triangle extends Shape{
-	Point[] P = new Point[3];
-	
-	Triangle(Point[] P) {
-		this.P = P;
+class Marine extends Unit{ //보병
+	void move(int x, int y) {
+		System.out.println("Marine[x="+x+",y="+y+"]");
 	}
-	
-	void draw() {
-		System.out.printf("[p1=%s, p2=%s, p3=%s, color=%s]%n",P[0].getXY(), P[1].getXY(), P[2].getXY(), color);
-	}
+	void stimPack() {/* 공격모드를 변환한다. */}
 }
-	
-	
+
+class Tank extends Unit{ //탱크
+	void move(int x,int y) {
+		System.out.println("Tank[x="+x+",y="+y+"]");
+	}
+	void changeMode() {/* 공격모드를 변환한다.*/}
+}
+class Dropship extends Unit{//수송선
+	void move(int x,int y) {
+		System.out.println("Dropship[x="+x+",y="+y+"]");
+	}
+	void load() {}
+	void unload() {}
+}
