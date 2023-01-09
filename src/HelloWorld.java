@@ -1,42 +1,22 @@
 
 class HelloWorld{
+	class InstanceInner{
+		int iv = 100;
+		final static int CONST = 100;
+	}
+	
+	static class StaticInner{
+		int iv = 200;
+		static int cv = 200;
+	}
+	void myMethod() {
+		class LocalInner {
+			int iv = 300;
+			final static int CONST = 300;
+		}
+	}
 	public static void main(String args[]) {
-		Child3 c= new Child3();
-		c.method1();
-		c.method2();
-		MyInterface.staticMethod();
-		MyInterface2.staticMethod();
-	}
-}
-class Child3 extends Parent3 implements MyInterface, MyInterface2{
-	public void method1() {
-		System.out.println("method1() in child3");
-	}
-}
-
-class Parent3{
-	public void method() {
-		System.out.println("method2() in Parent3");
-	}
-}
-
-interface MyInterface{
-	default void method1() {
-		System.out.println("method1() in MyInterface");
-	}
-	default void method2() {
-		System.out.println("method2() in MyInterface");
-	}
-	static void staticMethod() {
-		System.out.println("staticmethod() in MyInterface");
-	}
-}
-
-interface MyInterface2{
-	default void method1() {
-		System.out.println("method1() in MyInterface2");
-	}
-	static void staticMethod() {
-		System.out.println("staticMethod() in MyInterface2");
+		System.out.println(InstanceInner.CONST);
+		System.out.println(StaticInner.cv);
 	}
 }
