@@ -2,35 +2,19 @@ import java.util.*;
 
 class HelloWorld{
 	public static void main(String[] args) {
-		if(args.length != 1) {
-			System.out.println("EXPRESSION");
-			System.out.println("((2+3)*1)+3");
-			System.exit(0);
+		ArrayList list = new ArrayList();
+		list.add("1");
+		list.add("2");
+		list.add("3");
+		list.add("4");
+		list.add("5");
+		
+		Iterator it = list.iterator();
+		
+		while(it.hasNext()) {
+			Object obj = it.next();
+			System.out.println(obj);
 		}
-		
-		Stack st = new Stack();
-		String expression = args[0];
-		
-		System.out.println("expression:"+ expression);
-		
-		try {
-			for(int i = 0; i< expression.length(); i++) {
-				char ch = expression.charAt(i);
 				
-				if(ch == '(') {
-					st.push(ch + "");
-				}else if(ch ==')') {
-					st.pop();
-				}
-			}
-			if(st.isEmpty()) {
-				System.out.println("괄호가 일치합니다.");
-			}else {
-				System.out.println("괄호가 일치하지 않습니다");
-				
-			}
-		}catch(EmptyStackException e) {
-			System.out.println("괄호가 일치하지 않습니다");
-		}
 	}
 }
