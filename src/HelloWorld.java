@@ -3,27 +3,27 @@ import java.util.*;
 class HelloWorld{
 	public static void main(String[] args) {
 
-		String[] strArr = {"car","Dog","lion","tiger"};
+		Integer[] arr = { 30,50,10,50,20};
 		
-		Arrays.sort(strArr); //String 의 Comparable구현에 의한 정렬
-		System.out.println("strArr="+Arrays.toString(strArr));
+		Arrays.sort(arr); //Integer가 가지고 있는 기본 정렬기준 compareTo()로 정렬
+		System.out.println(Arrays.toString(arr));
 		
-		Arrays.sort(strArr,String.CASE_INSENSITIVE_ORDER); //대소문자 구분안함
-		System.out.println("strArr="+ Arrays.toString(strArr)); 
-		
-		Arrays.sort(strArr, new Descending());//역순 정렬
-		System.out.println("strArr="+Arrays.toString(strArr));
+		//sort(Object[] objArr, Comparator c)
+		Arrays.sort(arr,new DescComp()); //DescComp에 구현된 정렬 기준으로 정렬
+		System.out.println(Arrays.toString(arr));
 	}
 }
-class Descending implements Comparator{
+class DescComp implements Comparator{
 	public int compare(Object o1, Object o2) {
-		if( o1 instanceof Comparable && o2 instanceof Comparable) {
-			Comparable c1 = (Comparable)o1;
-			Comparable c2 = (Comparable)o2;
-			return c1.compareTo(c2)* -1; //-1을 곱해서 기본 정렬방식의 역으로 변경한다. 
-			                             //또는 c2.compareTo(c1)와 같이 순서를 바꿔도 된다.
-		}
-		return -1;
+		if( !(o1 instanceof Integer && o2 instanceof Integer)) 
+			return -1; //Integer가 아니면, 비교하지 않고 -1 반환
+			
+		Integer i = (Integer)o1;
+		Integer i2 = (Integer)o2;
+		
+		//return i2 - i; 또는 return i2.compareTo(i);도 가능
+		return i.compareTo(i2)* -1; //기본 정렬인 compareTo()의 역순으로 정렬
+		
 	}
 	
 }
