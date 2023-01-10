@@ -3,26 +3,22 @@ import java.util.*;
 class HelloWorld{
 	public static void main(String[] args) {
 
-		Integer[] arr = { 30,50,10,50,20};
+		Object[] objArr = {"1",new Integer(1),"2","2","3","3","4","4","4"};
+		Set set = new HashSet();
 		
-		Arrays.sort(arr); //Integer가 가지고 있는 기본 정렬기준 compareTo()로 정렬
-		System.out.println(Arrays.toString(arr));
-		
-		//sort(Object[] objArr, Comparator c)
-		Arrays.sort(arr,new DescComp()); //DescComp에 구현된 정렬 기준으로 정렬
-		System.out.println(Arrays.toString(arr));
-	}
-}
-class DescComp implements Comparator{
-	public int compare(Object o1, Object o2) {
-		if( !(o1 instanceof Integer && o2 instanceof Integer)) 
-			return -1; //Integer가 아니면, 비교하지 않고 -1 반환
+		for(int i=0; i < objArr.length;i++) {
+			set.add(objArr[i]); //  HashSet에 objArr의 요소들을 저장한다.
 			
-		Integer i = (Integer)o1;
-		Integer i2 = (Integer)o2;
+		}
+		//HashSet에 저장된 요소들을 출력한다.
+		System.out.println(set);
 		
-		//return i2 - i; 또는 return i2.compareTo(i);도 가능
-		return i.compareTo(i2)* -1; //기본 정렬인 compareTo()의 역순으로 정렬
+		//HashSet에 저장된 요소들을 출력한다.(Iterator이용)
+		Iterator it = set.iterator();
+		
+		while(it.hasNext()) {
+			System.out.println(it.next());
+		}
 		
 	}
 	
