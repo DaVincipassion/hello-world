@@ -2,53 +2,28 @@ import java.util.*;
 
 class HelloWorld{
 	public static void main(String[] args) {
-	
-		int [] arr = {0,1,2,3,4};
-		int[][] arr2D = {{11,12,13}, {21,22,23}};
+
+		String[] strArr = {"car","Dog","lion","tiger"};
 		
-		System.out.println("arr="+Arrays.toString(arr));
-		System.out.println("arr2D="+Arrays.deepToString(arr2D));
+		Arrays.sort(strArr); //String 의 Comparable구현에 의한 정렬
+		System.out.println("strArr="+Arrays.toString(strArr));
 		
-		int[] arr2 = Arrays.copyOf(arr, arr.length);
-		int[] arr3 = Arrays.copyOf(arr, 3);
-		int[] arr4 = Arrays.copyOf(arr, 7);
-		int[] arr5 = Arrays.copyOfRange(arr, 2,4);
-		int[] arr6 = Arrays.copyOfRange(arr, 0,7);
+		Arrays.sort(strArr,String.CASE_INSENSITIVE_ORDER); //대소문자 구분안함
+		System.out.println("strArr="+ Arrays.toString(strArr)); 
 		
-		System.out.println("arr2="+Arrays.toString(arr2));
-		System.out.println("arr3="+Arrays.toString(arr3));
-		System.out.println("arr4="+Arrays.toString(arr4));
-		System.out.println("arr5="+Arrays.toString(arr5));
-		System.out.println("arr6="+Arrays.toString(arr6));
-		
-		int[] arr7 = new int[5];
-		Arrays.fill(arr7, 9); //arr = [9,9,9,9,9]
-		System.out.println("arr7="+Arrays.toString(arr7));
-		
-		Arrays.setAll(arr7, i ->(int)(Math.random()*6)+1);
-		System.out.println("arr7="+Arrays.toString(arr7));
-		
-		for(int i:arr7) {
-			char[] graph = new char[i];
-			Arrays.fill(graph, '*');
-			System.out.println(new String(graph)+1);
-		}
-		String[][] str2D = new String[][]{{"aaa","bbb"},{"AAA","BBB"}};
-		String[][] str2D2 = new String[][]{{"aaa","bbb"},{"AAA","BBB"}};
-		
-		System.out.println(Arrays.equals(str2D, str2D2));
-		System.out.println(Arrays.deepEquals(str2D, str2D2));
-		
-		char[] chArr = { 'A','D','C','B','E'};
-		
-		System.out.println("chArr="+Arrays.toString(chArr));
-		System.out.println("index of B="+Arrays.binarySearch(chArr,'B'));
-		System.out.println("= After sorting =");
-		Arrays.sort(chArr);
-		System.out.println("chArr="+Arrays.toString(chArr));
-		System.out.println("index of B="+Arrays.binarySearch(chArr,'B'));
-		
-	
-				
+		Arrays.sort(strArr, new Descending());//역순 정렬
+		System.out.println("strArr="+Arrays.toString(strArr));
 	}
+}
+class Descending implements Comparator{
+	public int compare(Object o1, Object o2) {
+		if( o1 instanceof Comparable && o2 instanceof Comparable) {
+			Comparable c1 = (Comparable)o1;
+			Comparable c2 = (Comparable)o2;
+			return c1.compareTo(c2)* -1; //-1을 곱해서 기본 정렬방식의 역으로 변경한다. 
+			                             //또는 c2.compareTo(c1)와 같이 순서를 바꿔도 된다.
+		}
+		return -1;
+	}
+	
 }
