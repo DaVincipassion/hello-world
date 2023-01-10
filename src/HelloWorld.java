@@ -3,16 +3,26 @@ import java.util.*;
 class HelloWorld{
 	public static void main(String[] args) {
 
-		Set set = new HashSet();
+		HashSet set = new HashSet();
 		
-		for(int i=0;set.size() < 6 ; i++) {
-			int num = (int)(Math.random()*45)+1;
-			set.add(new Integer(num));
-		}
+		set.add("abc");
+		set.add("abc");
+		set.add(new Person("David",10));
+		set.add(new Person("David",10));
 		
-		List list = new LinkedList(set);
-		Collections.sort(list);
-		System.out.println(list);
+		System.out.println(set);
 	}
 	
+}
+class Person {
+	String name;
+	int age;
+	
+	Person(String name,int age){
+		this.name= name;
+		this.age=age;
+	}
+	public String toString() {
+		return name +":"+age;
+	}
 }
