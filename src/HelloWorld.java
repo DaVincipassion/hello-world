@@ -1,27 +1,30 @@
 
 import java.util.*;
-class Product{
-}
-class Tv extends Product{}
-class Audio extends Product{}
+
 class HelloWorld{
 	public static void main(String[] args) {
 
-		ArrayList<Product> productList = new ArrayList<Product>();
-		ArrayList<Tv> TvList = new ArrayList<Tv>();
-	
-		productList.add(new Tv());
-		productList.add(new Audio());
+		ArrayList<Student> list = new ArrayList<Student>();
+		list.add(new Student("ÀÚ¹Ù¿Õ",1, 1));
+		list.add(new Student("ÀÚ¹ÙÂ¯",1, 2));
+		list.add(new Student("È«±æµ¿",2, 1));
 		
-		TvList.add(new Tv());
-		TvList.add(new Tv());
-		
-		printAll(productList);
-		
-   }
-	public static void printAll(ArrayList<Product> list) {
-		for(Product p : list)
-			System.out.println(p);
+		Iterator<Student> it = list.iterator();
+		while (it.hasNext()) {
+			Student s = it.next();
+			System.out.println(s.name);
+		}
 	}
 
+}
+class Student{
+	String name = "";
+	int ban;
+	int no;
+	
+	Student(String name, int ban, int no){
+		this.name = name;
+		this.ban = ban;
+		this.no = no;
+	}
 }
