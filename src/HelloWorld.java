@@ -9,9 +9,13 @@
 			System.out.println(3);
 			System.out.println(0/0);
 			System.out.println(4);  //실행되지 않는다.
-		}catch(Exception e) {   
-			System.out.println(5);
-		}
+		}catch(ArithmeticException ae) {
+			if(ae instanceof ArithmeticException) 
+			System.out.println("true");
+			System.out.println("ArithmeticException");
+		}catch(Exception e) {
+		System.out.println("Exception");
+	}
 		System.out.println(6);
 	}
 }
