@@ -1,25 +1,16 @@
-
+import javax.swing.JOptionPane;
 class HelloWorld{
-	static long startTime = 0;
-
-	public static void main(String[] args) {
+	public static void main(String[] args)throws Exception {
 	
-		ThreadEx3 th1 = new ThreadEx3();
-		th1.start();
-		startTime = System.currentTimeMillis();
+		String input = JOptionPane.showInputDialog("아무 값이나 입력하세요.");
+		System.out.println("입력하신 값은 "+ input + "입니다");
 		
-		for(int i = 0; i<300;i++) 
-			System.out.printf("%s",new String("-"));
-			
-			System.out.print(System.currentTimeMillis()-HelloWorld.startTime);
+		for(int i=10; i>0;i--) {
+			System.out.println(i);
+			try {
+				Thread.sleep(1000);
+			}catch(Exception e) {}
 		}
 	}
-			class ThreadEx3 extends Thread{
-				public void run() {
-			for(int i=0;i<300;i++) 
-				System.out.printf("%s",new String("|"));
-				
-				System.out.print(System.currentTimeMillis()-HelloWorld.startTime);
-			}
-		}
 	
+}
