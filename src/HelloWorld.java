@@ -1,21 +1,28 @@
-import java.io.File;
 
 class HelloWorld{
 	public static void main(String[] args) {
 	
-		try {
-			File f = createFile(args[0]);
-			System.out.println(f.getName()+"파일이 성공적으로 생성되었습니다.");
-		}catch(Exception e) {
-			System.out.println(e.getMessage()+"다시 입력해 주시기 바랍니다.");
-		}
-	}
-	static File createFile(String fileName) throws Exception{
-		if(fileName == null || fileName.equals(""))
-			throw new Exception("파일이름이 유효하지 않습니다.");
-		File f = new File(fileName);
-		f.createNewFile();
-		return f;
+	ThreadEx1 t1 = new ThreadEx1();
+	Runnable r = new ThreadEx2();
+	Thread t2 = new Thread(r);
+	
+	t1.start();
+	t2.start();
 	}
 }
 	
+class ThreadEx1 extends Thread{
+	public void run() {
+		for(int i=0; i<5; i++) {
+			System.out.println(getName());
+			
+		}
+	}
+}
+class ThreadEx2 implements Runnable{
+	public void run() {
+		for(int i = 0;i<5;i++) {
+			System.out.println(Thread.currentThread().getName());
+		}
+	}
+}
