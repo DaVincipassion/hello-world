@@ -1,21 +1,32 @@
-import javax.swing.JOptionPane;
+
 class HelloWorld{
 	public static void main(String[] args)throws Exception {
 	
-		ThreadEx5 th1 = new ThreadEx5();
+		ThreadEx6 th1 = new ThreadEx6();
+		ThreadEx6_2 th2 = new ThreadEx6_2();
+
+		th2.setPriority(7);
+		
+		System.out.println(th1.getPriority());
+		System.out.println(th2.getPriority());
 		th1.start();
-		String input = JOptionPane.showInputDialog("아무 값이나 입력하세요.");
-		System.out.println("입력하신 값은 "+ input + "입니다");
-	}
-}
-		class ThreadEx5 extends Thread{
-			public void run() {
-		for(int i=10; i>0;i--) {
-			System.out.println(i);
-			try {
-				Thread.sleep(1000);
-			}catch(Exception e) {}
-		}
+		th2.start();
 	}
 	
+}
+class ThreadEx6 extends Thread{
+	public void run() {
+		for(int i=0;i<300;i++) {
+			System.out.println("-");
+			for(int x=0;x<10000000;x++);
+		}
+	}
+}
+class ThreadEx6_2 extends Thread{
+	public void run() {
+		for(int i=0;i<300;i++) {
+			System.out.println("|");
+			for(int x=0;x<10000000;x++);
+		}
+	}
 }
