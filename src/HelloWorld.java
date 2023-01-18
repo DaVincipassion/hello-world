@@ -1,33 +1,34 @@
 
 class HelloWorld{
-	static long startTime = 0;
 	public static void main(String[] args)throws Exception {
 	
-		ThreadEx11 th1 = new ThreadEx11();
-		ThreadEx11_2 th2 = new ThreadEx11_2();
-		th1.start();
-		th2.start();
-		startTime = System.currentTimeMillis();
+		Runnable r = new RunnableEx12();
+		new Thread(r).start();
+		new Thread(r).start();
 		
-		try {
-			th1.join();
-			th2.join();
-		}catch(InterruptedException e) {}
-		
-		System.out.println("소요시간:"+(System.currentTimeMillis()-HelloWorld.startTime));
 	}
 }
-class ThreadEx11 extends Thread {
-	public void run() {
-		for(int i =0; i<300; i++) {
-			System.out.print(new String("-"));
+class Account {
+	private int balance = 1000;
+	
+	public int getBalance() {
+		return balance;
+	}
+	public synchronized void withdraw(int money) {
+		if(balance >= money) {
+			try { Thread.sleep(1000);} catch(InterruptedException e) {}
+			balance -= money;
 		}
 	}
 }
-class ThreadEx11_2 extends Thread{
+class RunnableEx12 implements Runnable{
+	Account acc = new Account();
+	
 	public void run() {
-		for(int i=0; i<300; i++) {
-			System.out.print(new String("|"));
+		while(acc.getBalance()>0) {
+			int money = (int)(Math.random() * 3 + 1)*100;
+			acc.withdraw(money);
+			System.out.println("balance:"+acc.getBalance());
 		}
 	}
 }
