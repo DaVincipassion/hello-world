@@ -1,37 +1,33 @@
 
 class HelloWorld{
+	static long startTime = 0;
 	public static void main(String[] args)throws Exception {
 	
-		RunImplEx10 r = new RunImplEx10();
-		Thread th1 = new Thread(r,"*");
-		Thread th2 = new Thread(r,"**");
-		Thread th3 = new Thread(r,"***");
+		ThreadEx11 th1 = new ThreadEx11();
+		ThreadEx11_2 th2 = new ThreadEx11_2();
 		th1.start();
 		th2.start();
-		th3.start();
+		startTime = System.currentTimeMillis();
 		
 		try {
-			Thread.sleep(2000);
-			th1.suspend();
-			Thread.sleep(2000);
-			th2.suspend();
-			Thread.sleep(3000);
-			th1.resume();
-			Thread.sleep(3000);
-			th1.stop();
-			th2.stop();
-			Thread.sleep(2000);
-			th3.stop();
+			th1.join();
+			th2.join();
 		}catch(InterruptedException e) {}
+		
+		System.out.println("소요시간:"+(System.currentTimeMillis()-HelloWorld.startTime));
 	}
 }
-class RunImplEx10 implements Runnable{
+class ThreadEx11 extends Thread {
 	public void run() {
-		while(true) {
-			System.out.println(Thread.currentThread().getName());
-			try {
-				Thread.sleep(1000);
-			}catch(InterruptedException e) {}
+		for(int i =0; i<300; i++) {
+			System.out.print(new String("-"));
+		}
+	}
+}
+class ThreadEx11_2 extends Thread{
+	public void run() {
+		for(int i=0; i<300; i++) {
+			System.out.print(new String("|"));
 		}
 	}
 }
