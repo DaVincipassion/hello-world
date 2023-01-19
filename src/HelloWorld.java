@@ -1,27 +1,24 @@
-class Card{
-	String kind;
-	int number;
-	
-	Card(){
-		this("SPADE",1);
-	}
-	Card(String kind,int number){
-		this.kind = kind;
-		this.number = number;
-	}
-	public String toString() {
-		return "kind: " + kind + ",number " + number;
-	}
-	
-}
+
 class HelloWorld{
 	public static void main(String[] args) {
 	
-		Card c1 = new Card();
-		Card c2 = new Card();
+		String str1 = "abc";
+		String str2 = "abc";
+		System.out.println("String str1 = \"abc\";");
+		System.out.println("String str2 = \"abc\";");
+	
+		System.out.println("str1 == str2 ?"+ (str1 == str2));
+		System.out.println("str1.equals(str2) ? "+ str1.equals(str2));
+		System.out.println();
 		
-		System.out.println(c1.toString());
-		System.out.println(c2.toString());
+		String str3 = new String("abc");
+		String str4 = new String("abc");
+		System.out.println("String str3 = \"abc\";");
+		System.out.println("String str4 = \"abc\";");
+	
+		System.out.println("str3 == str4 ?"+ (str1 == str2));
+		System.out.println("str3.equals(str4) ? "+ str3.equals(str4));
+		
 		
 	}
 }
